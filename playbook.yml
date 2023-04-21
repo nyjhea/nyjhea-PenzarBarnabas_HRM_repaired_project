@@ -1,0 +1,9 @@
+---
+
+- name: Create samba sharing; fstab and firewallzone making
+  hosts: servers
+
+  roles:
+    - role1
+    - role2
+    - role3

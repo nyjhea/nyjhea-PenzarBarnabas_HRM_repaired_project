@@ -1,0 +1,33 @@
+---
+# tasks file for ./role1
+- name: Package install
+  ansible.builtin.dnf:
+    name: "{{var_package}}"
+    state: present
+
+- name: Service starting
+  ansible.builtin.service:
+    name: "{{var_service}}"
+    state: started
+    enable: true
+
+- name: Samba on firewall
+  ansible.builtin.file:
+    path: "{{var_path}}"
+    state: directory
+    owner: "{{var_owner}}"
+    group: "{{var_group}}"
+    mode: "{{var_mode}}"
+    setype: "{{var_setype}}"
+
+- name: Configuration
+  ansible.builtin.blockinfile:
+    path: "{{var_conffile}}"
+    block: |
+      [fontos]
+      path = "{{var_path}}"
+      writeable = yes
+      public = yes
+      valid users = fonok root
+      browseable = yes
+  notify: Service restart

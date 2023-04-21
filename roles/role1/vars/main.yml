@@ -1,0 +1,10 @@
+---
+# vars file for ./role1
+var_package: samba
+var_service: smb.service
+var_owner: root
+var_group: root
+var_mode: "0777"
+var_setype: "samba_share_t"
+var_path: "/data/fontos"
+var_conffile: "/etc/samba/smb.conf"

@@ -1,0 +1,6 @@
+---
+# handlers file for ./role1
+- name: Service restart
+  ansible.builtin.service:
+    name: smb.service
+    state: restarted

@@ -1,0 +1,17 @@
+---
+# tasks file for ./role2
+
+- name: Create folder
+  ansible.builtin.file:
+    path: "{{var_folder}}"
+    state: directory
+    owner: "{{var_owner}}"
+    group: "{{var_group}}" 
+    mode: "{{var_mode}}"
+
+- name: Input fstab
+  ansible.builtin.lineinfile:
+    path: "{{var_file}}"
+    line: "{{var_line}}"
+    state: present
+  notify: Restart

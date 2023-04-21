@@ -1,0 +1,5 @@
+---
+# vars file for /etc/ansible/roles/role3
+var_package: firewalld
+var_service: ssh
+

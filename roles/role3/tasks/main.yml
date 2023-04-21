@@ -1,0 +1,32 @@
+---
+# tasks file for /etc/ansible/roles/role3
+- name: Ensure firewalld is installed
+  ansible.builtin.dnf:
+    name: "{{var_package}}"
+    state: present
+
+- name: Ensure firewalld is running
+  ansible.builtin.service:
+    name: "{{var_package}}"
+    state: started
+    enabled: true
+
+- name: Add firewalld service for ssh
+  ansible.builtin.firewalld:
+    service: "{{var_service}}"
+    permanent: true
+    state: enabled
+    immediate: true
+
+- name: Add firewalld service for samba
+  ansible.builtin.firewalld:
+    port: "4312/tcp"
+    permanent: true
+    state: enabled
+    immediate: true
+
+- name: Set default firewalld zone to reject 
+  ansible.builtin.firewalld:
+    default_zone: reject
+    immediate: true
+  notify: restart firewalld

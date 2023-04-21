@@ -1,0 +1,8 @@
+---
+# vars file for ./role2
+var_folder: "/data"
+var_owner: root
+var_group: root
+var_mode: "660"
+var_file: "/etc/fstab"
+var_line: "/data/fontos /data xfs defaults 0 0"
